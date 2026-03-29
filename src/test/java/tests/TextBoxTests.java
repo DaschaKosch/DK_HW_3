@@ -4,21 +4,19 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class TextBoxTests {
-    @BeforeAll
-    static void beforeall() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com/text-box";
-    }
+public class TextBoxTests extends TestBase {
+
 
 @Test
     void successfulFillTest() {
-        open("/text-box");
+        Selenide.open("https://demoqa.com/text-box");
     $("[id=userName]").setValue("Alex Black");
     $("[id=userEmail]").setValue("alex@black.com");
     $("[id=currentAddress]").setValue("first address 1");
