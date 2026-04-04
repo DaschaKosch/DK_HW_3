@@ -10,7 +10,7 @@ public class TestBase {
     @BeforeAll
     static void beforeall() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com/text-box";
+        Configuration.baseUrl = "https://demoqa.com";
     }
     @AfterEach
     void afterEach() {
