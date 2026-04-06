@@ -1,15 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -50,21 +47,21 @@ public class TextBoxTests extends TestBase {
         $("[id=firstName]").setValue("Alex");
         $("[id=lastName]").setValue("Black");
         $("[id=userEmail]").setValue("alex@black.com");
-        //$("#genderWrapper").$(By.xpath(".//label[text()='Male']")).click();
-        $("[value=Male]").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("[id=userNumber]").setValue("1020304050");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day--001").click();
         $("#subjectsInput").setValue("Chemistry").pressEnter();
-        $("#hobbiesWrapper").$(By.xpath(".//label[text()='Music']")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("[id=uploadPicture]").uploadFromClasspath("img.png");
         $("[id=currentAddress]").setValue("123  Street");
         $("#state").click();
-        $("#state").$(By.xpath(".//div[text()='NCR']")).click();
+        //$("#state").$(By.xpath(".//div[text()='NCR']")).click();
+        $("#state").$(byText("NCR")).click();
         $("#city").click();
-        $("#city").$(By.xpath(".//div[text()='Delhi']")).click();
+        $("#city").$(byText("Delhi")).click();
         $("[id=submit]").click();
         $(".modal-content").shouldBe(visible);
 
@@ -92,7 +89,7 @@ public class TextBoxTests extends TestBase {
         open("/automation-practice-form");
         $("#firstName").setValue("Darja");
         $("#lastName").setValue("Koshman");
-        $("[value=Female]").click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9999999999");
         $("#submit").scrollTo().click();
         $(".modal-content").shouldBe(visible);
@@ -117,7 +114,7 @@ public class TextBoxTests extends TestBase {
         open("/automation-practice-form");
         $("#firstName").setValue("Andy");
         $("#lastName").setValue("Bin");
-        $("[value=Male]").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("123");
         $("#submit").scrollTo().click();
         $(".modal-content").shouldNotBe(visible);
