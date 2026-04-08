@@ -8,12 +8,12 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
     @BeforeAll
-    static void beforeall() {
+    static void setUpConfig() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
     }
     @AfterEach
-    void afterEach() {
+    void tearDownBrowser() {
         closeWebDriver();
     }
 }
