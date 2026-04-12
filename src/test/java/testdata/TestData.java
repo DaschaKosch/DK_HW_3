@@ -6,9 +6,10 @@ public class TestData {
     public static String email = "alex@black.com";
     public static String gender = "Male";
     public static String phone = "1020304050";
-    public static String birthMonth = "January";
-    public static String birthYear = "2000";
-    public static String birthDay = "1";
+    public static String negativePhone = "123";
+    public static String month = "January";
+    public static String year = "2000";
+    public static String day = "1";
     public static String subject = "Chemistry";
     public static String hobby = "Music";
     public static String picture = "img.png";
@@ -17,6 +18,7 @@ public class TestData {
     public static String city = "Delhi";
     public static String userName = "Alex Black";
     public static String userEmail = "alex@black.com";
-    public static String permanentAddress = "123  Street";
+    public static String negativeUserEmail = "alex.com";
+    public static String permanentAddress = "123 Street";
 
 }
