@@ -14,12 +14,13 @@ public class TextBoxTests extends TestBase {
                 .typeUserEmail(userEmail)
                 .typeCurrentAddress(currentAddress)
                 .typePermanentAddress(permanentAddress)
-                .submitForm();
-
-        textBoxPage.checkField("name", userName);
-        textBoxPage.checkField("email", userEmail);
-        textBoxPage.checkField("currentAddress", currentAddress);
-        textBoxPage.checkField("permanentAddress", permanentAddress);
+                .submitForm()
+                .outputShouldBeVisible()
+                .getResult()
+                .checkResult(userName)
+                .checkResult(userEmail)
+                .checkResult(currentAddress)
+                .checkResult(permanentAddress);
 
     }
 
@@ -32,7 +33,7 @@ public class TextBoxTests extends TestBase {
                 .typePermanentAddress(permanentAddress)
                 .submitForm();
 
-        textBoxPage.outputShouldNotBeVisible(visible);
+        textBoxPage.outputShouldNotBeVisible();
     }
 
 }

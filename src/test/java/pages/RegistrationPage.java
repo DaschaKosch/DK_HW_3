@@ -1,8 +1,7 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebElementCondition;
 import org.openqa.selenium.By;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultComponent;
@@ -16,21 +15,21 @@ import static com.codeborne.selenide.Selenide.open;
 public class RegistrationPage {
 
     //===== Components =====
-    CalendarComponent calendar = new CalendarComponent();
-    RegistrationResultComponent resultComponent = new RegistrationResultComponent();
+    private final CalendarComponent calendar = new CalendarComponent();
+    private final RegistrationResultComponent resultComponent = new RegistrationResultComponent();
 
     // ===== Elements =====
-    private SelenideElement firstNameInput = $("#firstName");
-    private SelenideElement lastNameInput = $("#lastName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement userNumberInput = $("#userNumber");
-    private SelenideElement currentAddressInput = $("#currentAddress");
-    private SelenideElement genderContainer = $("#genterWrapper");
-    private SelenideElement hobbiesContainer = $("#hobbiesWrapper");
-    private SelenideElement uploadPictureInput = $("#uploadPicture");
-    private SelenideElement subjectsInput = $("#subjectsInput");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement modalContent = $(".modal-content");
+    private final SelenideElement firstNameInput = $("#firstName");
+    private final SelenideElement lastNameInput = $("#lastName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement userNumberInput = $("#userNumber");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement genderContainer = $("#genterWrapper");
+    private final SelenideElement hobbiesContainer = $("#hobbiesWrapper");
+    private final SelenideElement uploadPictureInput = $("#uploadPicture");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement modalContent = $(".modal-content");
 
 
     // ===== Actions ======
@@ -98,6 +97,7 @@ public class RegistrationPage {
     public RegistrationResultComponent getResult() {
         return resultComponent;
     }
+
     public RegistrationPage modalContentShouldBeVisible() {
         modalContent.shouldBe(visible);
         return this;

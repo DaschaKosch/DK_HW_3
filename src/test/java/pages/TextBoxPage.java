@@ -1,28 +1,29 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebElementCondition;
-import static com.codeborne.selenide.Condition.text;
+import pages.components.TextBoxResultComponent;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxPage {
 
+    //===== Components =====
+    private final TextBoxResultComponent resultComponent = new TextBoxResultComponent();
+
     // ===== Elements =====
-    private SelenideElement userNameInput = $("#userName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement currentAddressInput = $("#currentAddress");
-    private SelenideElement permanentAddressInput = $("#permanentAddress");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement outputResults = $("#output");
+    private final SelenideElement userNameInput = $("#userName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement permanentAddressInput = $("#permanentAddress");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement outputResults = $("#output");
 
 
     // ===== Actions ======
-    public TextBoxPage outputShouldNotBeVisible(WebElementCondition visible) {
-        outputResults.shouldNotBe(Condition.visible);
+    public TextBoxPage outputShouldNotBeVisible() {
+        outputResults.shouldNotBe(visible);
         return this;
     }
 
@@ -62,9 +63,8 @@ public class TextBoxPage {
         return this;
     }
 
-    public TextBoxPage checkField(String key, String value) {
-        outputResults.$(byId(key)).shouldHave(text(value));
-        return this;
+    public TextBoxResultComponent getResult() {
+        return resultComponent;
     }
 
 
