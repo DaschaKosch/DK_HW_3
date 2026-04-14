@@ -8,7 +8,7 @@ public class RegistrationFormTests extends TestBase {
     TestData data = new TestData();
 
     @Test
-    void fillAllFieldsDetailedTest() {
+    void fillAllFieldsDetailedTestWithFaker() {
         registrationPage.openPage()
                 .typeFirstName(data.firstName)
                 .typeLastName(data.lastName)
@@ -40,7 +40,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
-    void fillRequiredFieldsTest() {
+    void fillRequiredFieldsTestWithFaker() {
         registrationPage.openPage()
                 .typeFirstName(data.firstName)
                 .typeLastName(data.lastName)
@@ -58,14 +58,14 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
-    void negativeEmptyFormTest() {
+    void negativeEmptyFormTestWithFaker() {
         registrationPage.openPage()
                 .submitForm()
                 .modalContentShouldNotBeVisible();
     }
 
     @Test
-    void invalidPhoneNumberTest() {
+    void invalidPhoneNumberTestWithFaker() {
         registrationPage.openPage()
                 .typeFirstName(data.firstName)
                 .typeLastName(data.lastName)
@@ -76,7 +76,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
-    void negativeFillOnlyFirstNameTest() {
+    void negativeFillOnlyFirstNameTestWithFaker() {
         registrationPage.openPage()
                 .typeFirstName(data.firstName)
                 .submitForm()

@@ -26,7 +26,7 @@ public class TextBoxTests extends TestBase {
     }
 
     @Test
-    void  invalidEmailFormatTest() {
+    void  invalidEmailFormatTestWithFaker() {
 
         textBoxPage.openPage()
                 .typeUserName(data.userName)
