@@ -2,6 +2,7 @@ package pages;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.TextBoxResultComponent;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,47 +23,52 @@ public class TextBoxPage {
 
 
     // ===== Actions ======
+    @Step("Output results should not be visible")
     public TextBoxPage outputShouldNotBeVisible() {
         outputResults.shouldNotBe(visible);
         return this;
     }
 
+
+
+    @Step("Output results should be visible")
     public TextBoxPage outputShouldBeVisible() {
         outputResults.shouldBe(visible);
         return this;
     }
-
+    @Step("Type user name \"{value}\"")
     public TextBoxPage typeUserName(String value) {
         userNameInput.setValue(value);
         return this;
     }
-
+    @Step("Type current address \"{value}\"")
     public TextBoxPage typeCurrentAddress(String value) {
         currentAddressInput.setValue(value);
         return this;
     }
-
+    @Step("Type permanent address \"{value}\"")
     public TextBoxPage typePermanentAddress(String value) {
         permanentAddressInput.setValue(value);
         return this;
     }
-
+    @Step("Type user email \"{value}\"")
     public TextBoxPage typeUserEmail(String value) {
         userEmailInput.setValue(value);
         return this;
     }
-
+    @Step("Open registration page /text-box")
     public TextBoxPage openPage() {
         open("/text-box");
         return this;
 
     }
-
+    @Step("Submit form")
     public TextBoxPage submitForm() {
         submitButton.scrollTo().click();
         return this;
     }
 
+    @Step("Get result {resultComponent}")
     public TextBoxResultComponent getResult() {
         return resultComponent;
     }
