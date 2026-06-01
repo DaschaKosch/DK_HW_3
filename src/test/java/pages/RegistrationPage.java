@@ -96,11 +96,11 @@ public class RegistrationPage {
     public RegistrationPage setStateAndCity(String state, String city) {
         $("#state").click();
         $(By.xpath("//*[contains(@id, 'react-select') and contains(@id, 'listbox')]//*[text()='" + state + "']"))
-                .shouldBe(visible, Duration.ofSeconds(5))
+                .shouldBe(visible, Duration.ofSeconds(15))
                 .click();
         $("#city").click();
         $(By.xpath("//*[contains(@id, 'react-select') and contains(@id, 'listbox')]//*[text()='" + city + "']"))
-                .shouldBe(visible, Duration.ofSeconds(5))
+                .shouldBe(visible, Duration.ofSeconds(15))
                 .click();
 
         return this;

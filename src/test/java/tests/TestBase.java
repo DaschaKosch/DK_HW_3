@@ -7,7 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 import pages.TextBoxPage;
 
@@ -21,21 +21,30 @@ public class TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @BeforeAll
-    static void setUpConfig() {
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.timeout = 10000;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //удаленная ферма Selenoid
+        static void beforeAll() {
+            Configuration.browser = System.getProperty("browser", "chrome");
+            Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
+            Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+            Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
+            Configuration.baseUrl = System.getProperty("testSiteBaseUrl", "https://demoqa.com");
+            Configuration.timeout = 4000;
 
-        //для записи видео. Это объект свойств chrome
-        ChromeOptions options = new ChromeOptions();
-        options.setCapability("selenoid:options", Map.of(
-                "enableVNC", true,      //потоковое видео
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
                 "enableVideo", true
-        ));                                     //можно добавить сертификат и пр.настройки
-        Configuration.browserCapabilities = options;
-
+        ));
+        Configuration.browserCapabilities = capabilities;
+        Configuration.remote = "https://" +
+                System.getProperty("remoteBrowserUrlLogin", "user1") + // второе значение - по умолчанию
+                ":" +
+                System.getProperty("remoteBrowserUrlPassword", "1234") +
+                "@" +
+                System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud/wd/hub");
+        System.out.println("Запуск тестов с конфигурацией:");
+        System.out.println("baseUrl: " + Configuration.baseUrl);
+        System.out.println("browser: " + Configuration.browser + " " + Configuration.browserVersion);
+        System.out.println("headless: " + Configuration.headless);
     }
 
     @BeforeEach
