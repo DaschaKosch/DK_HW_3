@@ -21,7 +21,7 @@ public class TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @BeforeAll
-        static void beforeAll() {
+        static void prepareEnvironment() {
             Configuration.browser = System.getProperty("browser", "chrome");
             Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
             Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
@@ -36,9 +36,9 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
         Configuration.remote = "https://" +
-                System.getProperty("remoteBrowserUrlLogin", "user1") + // второе значение - по умолчанию
+                System.getProperty("remoteBrowserUrlLogin", "") + // второе значение - по умолчанию
                 ":" +
-                System.getProperty("remoteBrowserUrlPassword", "1234") +
+                System.getProperty("remoteBrowserUrlPassword", "") +
                 "@" +
                 System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud/wd/hub");
         System.out.println("Запуск тестов с конфигурацией:");
